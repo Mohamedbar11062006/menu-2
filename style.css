@@ -1,0 +1,604 @@
+/* ===========================
+   RESET
+=========================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f8f8f8;
+    color:#333;
+}
+
+/* ===========================
+   HEADER
+=========================== */
+
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:#5d403790;
+    color:white;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px 8%;
+    z-index:1000;
+    box-shadow:0 2px 10px rgba(0,0,0,.2);
+}
+
+.logo {
+    font-size: 30px;           /* Slightly larger */
+    font-weight: 800;          /* Extra bold for a logo feel */
+    text-transform: uppercase; /* Makes it look like a strong brand */
+    letter-spacing: 1px;       /* Adds a little breathing room between letters */
+    color: #ffffff;
+    display: flex;             /* Aligns the emoji and text perfectly */
+    align-items: center;
+    gap: 10px;                 /* Adds space between the emoji and the text */
+    cursor: pointer;           /* Shows a pointer finger so it feels like a home button */
+    transition: 0.3s;
+    font-family:Brush Script MT, cursive ;
+}
+
+/* This targets the <span> tag we added to make the "&" pop */
+.logo span {
+    color: #FF9800;            /* Uses your brand's orange color */
+    font-size: 38px;           /* Makes the & symbol slightly larger than the text */
+    font-weight: 900;
+}
+
+/* Add a slight pop and shadow when hovered */
+.logo:hover {
+    transform: scale(1.05);
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    transition:.3s;
+    font-weight:500;
+}
+
+nav a:hover{
+    color:#FFD54F;
+}
+
+/* ===========================
+   HERO
+=========================== */
+
+.hero{
+
+    height:100vh;
+
+    background:url("https://images.unsplash.com/photo-1504754524776-8f4f37790ca0?w=1600") center center/cover;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.overlay{
+
+    background:rgba(0,0,0,.55);
+
+    width:100%;
+    height:100%;
+/* ===========================
+   MENU FILTER (DROPDOWN)
+=========================== */
+.menu-filter {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.menu-filter label {
+    font-size: 18px;
+    font-weight: 600;
+    color: #5D4037;
+    margin-right: 12px;
+}
+
+#category-select {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #5D4037;
+    background-color: white;
+    border: 2px solid #5D4037;
+    border-radius: 8px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s;
+    appearance: none; /* Hides default ugly arrow on some browsers */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%235D4037'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 24px;
+    padding-right: 40px; /* Make room for the custom arrow */
+}
+
+#category-select:hover, 
+#category-select:focus {
+    border-color: #FF9800;
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.4);
+}
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+    text-align:center;
+
+}
+
+.overlay h1{
+
+    font-size:55px;
+    margin-bottom:15px;
+
+}
+
+.overlay p{
+
+    font-size:22px;
+    margin-bottom:30px;
+
+}
+
+.btn{
+
+    background:#FF9800;
+
+    color:white;
+
+    padding:15px 35px;
+
+    border-radius:8px;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+.btn:hover{
+
+    background:#e68900;
+
+}
+
+/* ===========================
+   MENU
+=========================== */
+
+#menu{
+
+    padding:80px 8%;
+
+}
+
+#menu h2{
+
+    text-align:center;
+
+    margin-bottom:40px;
+
+    font-size:40px;
+
+}
+
+#menu-container{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+
+    gap:30px;
+
+}
+
+.card{
+
+    background:white;
+
+    border-radius:15px;
+
+    overflow:hidden;
+
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+
+    transition:.3s;
+
+}
+
+.card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.card img{
+
+    width:100%;
+
+    height:220px;
+
+    object-fit:cover;
+
+}
+
+.card-content{
+
+    padding:20px;
+
+}
+
+.card-content h3{
+
+    margin-bottom:10px;
+
+}
+
+.card-content p{
+
+    color:#666;
+
+    margin-bottom:15px;
+
+}
+
+.price{
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    color:#FF5722;
+
+}
+
+.add-btn{
+
+    width:100%;
+
+    margin-top:15px;
+
+    padding:12px;
+
+    border:none;
+
+    background:#4CAF50;
+
+    color:white;
+
+    cursor:pointer;
+
+    border-radius:8px;
+
+    font-size:17px;
+
+    transition:.3s;
+
+}
+
+.add-btn:hover{
+
+    background:#388E3C;
+
+}
+
+/* ===========================
+   CART
+=========================== */
+
+#cart{
+
+    padding:70px 8%;
+
+    background:white;
+
+}
+
+#cart h2{
+
+    text-align:center;
+
+    margin-bottom:30px;
+
+}
+
+#cart-items{
+
+    margin-bottom:20px;
+
+}
+
+.cart-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    background:#fafafa;
+
+    margin-bottom:15px;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+}
+
+.cart-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.quantity{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.quantity button{
+
+    width:35px;
+
+    height:35px;
+
+    border:none;
+
+    background:#FF9800;
+
+    color:white;
+
+    font-size:18px;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+}
+
+.remove{
+
+    background:#F44336 !important;
+
+}
+
+#cart h3{
+
+    margin-top:20px;
+
+    font-size:28px;
+
+}
+
+#order-btn{
+
+    width:100%;
+
+    margin-top:25px;
+
+    padding:15px;
+
+    border:none;
+
+    background:#2196F3;
+
+    color:white;
+
+    font-size:20px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+#order-btn:hover{
+
+    background:#1976D2;
+
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+/* ===========================
+   FOOTER
+=========================== */
+footer {
+    background: #000000;
+    color: white;
+    padding: 50px 8% 20px; /* Increased top padding to make it bigger */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Allows sections to stack on small screens */
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px; /* Prevents columns from getting too squished */
+}
+
+.footer-section h4 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #FFD54F; /* Warm yellow to match your nav hover */
+    letter-spacing: 1px;
+}
+
+.footer-section p {
+    margin-bottom: 15px;
+    color: #ddd; /* Slightly dimmed white for better reading */
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.footer-section p i {
+    color: #FF9800; /* Orange icons to match your brand */
+    font-size: 18px;
+    width: 20px; /* Keeps all the text perfectly aligned */
+    text-align: center;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2); /* A subtle divider line */
+    color: #bbb;
+    font-size: 14px;
+}
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:768px){
+
+header{
+
+    flex-direction:column;
+
+    gap:15px;
+
+}
+
+nav{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+}
+
+nav a{
+
+    margin:8px;
+
+}
+
+.overlay h1{
+
+    font-size:35px;
+
+}
+
+.overlay p{
+
+    font-size:18px;
+
+}
+
+.cart-item{
+
+    flex-direction:column;
+
+    align-items:flex-start;
+
+    gap:15px;
+
+}
+/* ===========================
+   SCROLL TO TOP BUTTON
+=========================== */
+#scrollTopBtn {
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 999; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: #FF9800; /* Matches your brand color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 15px 18px; /* Some padding */
+    border-radius: 50%; /* Rounded button */
+    font-size: 18px; /* Increase font size */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+#scrollTopBtn:hover {
+    background-color: #e68900; /* Darker orange on hover */
+    transform: translateY(-3px); /* Slight lift effect */
+}
+}
+.btn:hover {
+    background: #FFB74D; /* A brighter, lighter orange */
+    box-shadow: 0 0 10px #FF9800, 
+                0 0 20px #FF9800, 
+                0 0 40px #FFB74D; /* Creates the shiny glowing effect */
+    transform: translateY(-3px) scale(1.05); /* Lifts and slightly enlarges the button */
+}
+/* ===========================
+   LOCATION (GOOGLE MAP)
+=========================== */
+#location {
+    padding: 70px 8%;
+    background: #f8f8f8; /* Matches the body background */
+    text-align: center;
+}
+
+#location h2 {
+    font-size: 40px;
+    margin-bottom: 40px;
+    color: #333;
+}
+
+.map-container {
+    width: 100%;
+    max-width: 1000px; /* Prevents it from getting too wide on huge screens */
+    margin: 0 auto; /* Centers the map */
+    border-radius: 15px; /* Matches your menu card corners */
+    overflow: hidden; /* Ensures the map itself gets rounded corners */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15); /* Matches menu card shadow */
+    border: 3px solid #5D4037; /* Gives it a nice frame matching your brand */
+}
+
+.map-container iframe {
+    display: block; /* Removes the small white space underneath standard iframes */
+}
+#gitHub{
+    color: yellow;
+}
+#facebook{
+    color: yellow;
+}
+#portofolio{
+     color: yellow;
+}
