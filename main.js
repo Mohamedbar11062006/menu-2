@@ -1,16 +1,6 @@
 // ===============================
 // MENU DATA
 // ===============================
-// ===============================
-// DROPDOWN FILTER LOGIC
-// ==============================
-const categorySelect = document.getElementById("category-select");
-
-categorySelect.addEventListener("change", function() {
-    const selectedCategory = categorySelect.value;
-    displayMenu(selectedCategory);
-});
-
 const menu = [
     {
         id: 1, name: "Nutella Crepe", price: 6, category: "crepe",
@@ -45,19 +35,25 @@ const menu = [
         image: "https://images.unsplash.com/photo-1525351484163-7529414344d8?w=600"
     }
 ];
-// ===============================
-// CART
-// ===============================
 
+// ===============================
+// CART SETUP & DOM SELECTION
+// ===============================
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
 const menuContainer = document.getElementById("menu-container");
 const cartContainer = document.getElementById("cart-items");
 const totalPrice = document.getElementById("total-price");
+const categorySelect = document.getElementById("category-select");
+const orderBtn = document.getElementById("order-btn");
+const scrollTopBtn = document.getElementById("scrollTopBtn");
 
 // ===============================
-// SHOW MENU
+// DROPDOWN FILTER LOGIC
 // ===============================
+categorySelect.addEventListener("change", function() {
+    displayMenu(categorySelect.value);
+});
 
 // ===============================
 // SHOW MENU
@@ -65,7 +61,6 @@ const totalPrice = document.getElementById("total-price");
 function displayMenu(categoryFilter = "all") {
     menuContainer.innerHTML = "";
 
-    // Create a new list containing only the items that match the category
     let filteredMenu = menu;
     if (categoryFilter !== "all") {
         filteredMenu = menu.filter(item => item.category === categoryFilter);
@@ -85,216 +80,139 @@ function displayMenu(categoryFilter = "all") {
         `;
     });
 }
+
 // ===============================
 // ADD TO CART
 // ===============================
-
-function addToCart(id){
-
+function addToCart(id) {
     const product = menu.find(item => item.id === id);
-
     const existing = cart.find(item => item.id === id);
 
-    if(existing){
-
+    if (existing) {
         existing.quantity++;
-
-    }else{
-
+    } else {
         cart.push({
-
             ...product,
-
-            quantity:1
-
+            quantity: 1
         });
-
     }
 
     saveCart();
-
     displayCart();
-
 }
+
 // ===============================
 // DISPLAY CART
 // ===============================
-
-function displayCart(){
-
-    if(cart.length===0){
-
-        cartContainer.innerHTML="<p>Your cart is empty.</p>";
-
-        totalPrice.textContent=0;
-
+function displayCart() {
+    if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Your cart is empty.</p>";
+        totalPrice.textContent = 0;
         return;
-
     }
 
-    cartContainer.innerHTML="";
+    cartContainer.innerHTML = "";
+    let total = 0;
 
-    let total=0;
-
-    cart.forEach(item=>{
-
-        total+=item.price*item.quantity;
-
-        cartContainer.innerHTML+=`
-
+    cart.forEach(item => {
+        total += item.price * item.quantity;
+        cartContainer.innerHTML += `
         <div class="cart-item">
-
             <div class="cart-info">
-
                 <h4>${item.name}</h4>
-
                 <p>$${item.price} × ${item.quantity}</p>
-
             </div>
-
             <div class="quantity">
-
                 <button onclick="decreaseQuantity(${item.id})">-</button>
-
                 <span>${item.quantity}</span>
-
                 <button onclick="increaseQuantity(${item.id})">+</button>
-
-                <button class="remove"
-                onclick="removeItem(${item.id})">
-
-                <i class="fa-solid fa-trash"></i>
-
+                <button class="remove" onclick="removeItem(${item.id})">
+                    <i class="fa-solid fa-trash"></i>
                 </button>
-
             </div>
-
         </div>
-
         `;
-
     });
 
-    totalPrice.textContent=total;
-
+    totalPrice.textContent = total;
 }
 
 // ===============================
-// INCREASE QUANTITY
+// QUANTITY ADJUSTMENTS
 // ===============================
-
-function increaseQuantity(id){
-
-    const item=cart.find(product=>product.id===id);
-
-    if(item){
-
-        item.quantity++;
-
-    }
-
+function increaseQuantity(id) {
+    const item = cart.find(product => product.id === id);
+    if (item) item.quantity++;
     saveCart();
-
     displayCart();
-
 }
 
-// ===============================
-// DECREASE QUANTITY
-// ===============================
-
-function decreaseQuantity(id){
-
-    const item=cart.find(product=>product.id===id);
-
-    if(!item) return;
+function decreaseQuantity(id) {
+    const item = cart.find(product => product.id === id);
+    if (!item) return;
 
     item.quantity--;
-
-    if(item.quantity<=0){
-
-        cart=cart.filter(product=>product.id!==id);
-
+    if (item.quantity <= 0) {
+        cart = cart.filter(product => product.id !== id);
     }
-
     saveCart();
-
     displayCart();
-
 }
 
-// ===============================
-// REMOVE ITEM
-// ===============================
-
-function removeItem(id){
-
-    cart=cart.filter(product=>product.id!==id);
-
+function removeItem(id) {
+    cart = cart.filter(product => product.id !== id);
     saveCart();
-
     displayCart();
-
 }
+
 // ===============================
 // SAVE CART
 // ===============================
-
 function saveCart() {
     localStorage.setItem("cart", JSON.stringify(cart));
 }
 
 // ===============================
-// PLACE ORDER
+// PLACE ORDER (WHATSAPP INTEGRATION)
 // ===============================
-
-const orderBtn = document.getElementById("order-btn");
-
 orderBtn.addEventListener("click", placeOrder);
 
 function placeOrder() {
-
     if (cart.length === 0) {
-        alert("Your cart is empty!");
+        alert("Your cart is empty! Please add items before placing an order.");
         return;
     }
 
+    // Egypt WhatsApp format: 20 (country code) + 1129270804
+    const phoneNumber = "201129270804";
     let total = 0;
 
+    // Build the order message with item breakdown
+    let message = "🧾 *New Order - Crepe & Waffle*\n\n";
     cart.forEach(item => {
-        total += item.price * item.quantity;
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        message += `• ${item.name} x${item.quantity} - $${itemTotal}\n`;
     });
 
-    let message = "🧾 Order Summary\n\n";
+    message += `\n*Total Amount:* $${total}\n\nPlease confirm my order! 🥞🧇`;
 
-    cart.forEach(item => {
-        message += `${item.name} x${item.quantity} - $${item.price * item.quantity}\n`;
-    });
+    // Encode message for URL safety
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
 
-    message += `\nTotal: $${total}\n\n`;
-    message += "Thank you for your order!";
+    // Open WhatsApp in a new tab
+    window.open(whatsappURL, "_blank");
 
-    alert(message);
-
+    // Clear cart and update interface
     cart = [];
-
     saveCart();
-
     displayCart();
 }
 
 // ===============================
-// INITIALIZE WEBSITE
-// ===============================
-
-displayMenu();
-displayCart();
-// ===============================
 // SCROLL TO TOP BUTTON
 // ===============================
-const scrollTopBtn = document.getElementById("scrollTopBtn");
-
-// Show the button when scrolling down 300px from the top
 window.addEventListener("scroll", function () {
     if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
         scrollTopBtn.style.display = "block";
@@ -303,10 +221,15 @@ window.addEventListener("scroll", function () {
     }
 });
 
-// Scroll to the top when the button is clicked
 scrollTopBtn.addEventListener("click", function () {
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
 });
+
+// ===============================
+// INITIALIZE WEBSITE
+// ===============================
+displayMenu();
+displayCart();

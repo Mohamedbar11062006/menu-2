@@ -433,7 +433,7 @@ nav a:hover{
    FOOTER
 =========================== */
 footer {
-    background: #000000;
+    background: rgb(67, 3, 3);
     color: white;
     padding: 50px 8% 20px; /* Increased top padding to make it bigger */
 }
@@ -601,4 +601,15 @@ nav a{
 }
 #portofolio{
      color: yellow;
+}
+#fccw{
+    padding: auto;
+}
+.hero h1{
+    position: absolute;
+    top: 25%;
+}
+#oyfmo{
+    position: absolute;
+    top: 30%;
 }

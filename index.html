@@ -11,58 +11,40 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 </head>
 
 <body>
 
 <!-- ================= HEADER ================= -->
-
 <header>
-
-<div class="logo">
-    🥞 Crepe <span>&</span> Waffle
-</div>
+    <div class="logo">
+        🥞 Crepe <span>&</span> Waffle
+    </div>
     <nav>
-
         <a href="#">Home</a>
         <a href="#menu">Menu</a>
         <a href="#cart">Cart</a>
-
     </nav>
-
 </header>
 
 <!-- ================= HERO ================= -->
-
 <section class="hero">
-
     <div class="overlay">
-
-        <h1>Fresh Crepes & Crispy Waffles</h1>
-
-        <h5>Order your favorite meal online.</h5>
-
-        <a href="#menu" class="btn">
+        <h1 id="fccw">Fresh Crepes & Crispy Waffles</h1>
+        <h3 style="margin-top: 130px;" id="oyfmo">Order your favorite meal online.</h3>
+        <a href="#menu" class="btn" style="margin-top: 150px;">
             View Menu
         </a>
-
     </div>
-
 </section>
 
-<!-- ================= MENU ================= -->
-
-<section id="menu">
-
-    <h2>Our Menu</h2>
 <!-- ================= MENU ================= -->
 <section id="menu">
     <h2>Our Menu</h2>
 
     <!-- MENU FILTER -->
-    <div class="menu-filter">
+    <div class="menu-filter" style="margin-bottom: 120px;">
         <label for="category-select">Category:</label>
         <select id="category-select">
             <option value="all">All Items</option>
@@ -75,45 +57,30 @@
         <!-- JavaScript will create menu items here -->
     </div>
 </section>
-    <div id="menu-container">
-
-        <!-- JavaScript will create menu items here -->
-
-    </div>
-
-</section>
 
 <!-- ================= CART ================= -->
-
 <section id="cart">
-
     <h2>Shopping Cart</h2>
 
     <div id="cart-items">
-
         <p>Your cart is empty.</p>
-
     </div>
 
     <h3>
-
-        Total :
-        $<span id="total-price">0</span>
-
+        Total: $<span id="total-price">0</span>
     </h3>
 
     <button id="order-btn">
-
         Place Order
-
     </button>
-
 </section>
+
 <!--go up to the top-->
 <button id="scrollTopBtn" title="Go to top">
     <i class="fa-solid fa-arrow-up"></i>
 </button>
-    <!-- ================= LOCATION ================= -->
+
+<!-- ================= LOCATION ================= -->
 <section id="location">
     <h2>Find Us Here</h2>
     
@@ -130,12 +97,10 @@
         </iframe>
     </div>
 </section>
-<!-- ================= FOOTER ================= -->
 
 <!-- ================= FOOTER ================= -->
 <footer>
     <div class="footer-content">
-        
         <div class="footer-section">
             <h4>🥞 Crepe & Waffle</h4>
             <p>Serving the best fresh crepes and crispy waffles. Order online and enjoy the sweetness!</p>
@@ -144,17 +109,17 @@
         <div class="footer-section">
             <h4>Contact Info</h4>
             <p><i class="fa-solid fa-location-dot"></i> 123 Sweet Street, Tanta, Egypt</p>
-            <p><i class="fa-solid fa-phone"></i> +20 123 456 7890</p>
+            <p><i class="fa-solid fa-phone"></i> +20 112 927 0804</p>
             <p><i class="fa-solid fa-fax"></i> +20 123 456 7891</p>
         </div>
-
     </div>
 
     <div class="footer-bottom">
         <p>© 2026 Crepe & Waffle. All Rights Reserved.</p>
     </div>
-    <a href="https://github.com/Mohamedbar11062006?tab=repositories" id="gitHub">Visit my git hub</a>
-   <p>Made by <a href="https://mohamedbar11062006.github.io/mohamed-bar-professional-portfolio/" id="portofolio">Mohamed Bar</a></p> 
+    
+    <a href="https://github.com/Mohamedbar11062006?tab=repositories" id="gitHub">Visit my GitHub</a>
+    <p>Made by <a href="http://127.0.0.1:3000/Portofolio/index.html?vscode-livepreview=true" id="portofolio">Mohamed Bar</a></p> 
 </footer>
 
 <script src="main.js"></script>
